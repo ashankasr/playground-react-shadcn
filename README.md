@@ -1,6 +1,6 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + Tailwind + Shadcn + Prettier
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup to get React working in Vite with Tailwind, Shadcm, HMR and some ESLint and prettier rules.
 
 Currently, two official plugins are available:
 
