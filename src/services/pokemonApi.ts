@@ -16,7 +16,36 @@ export const pokemonApi = createApi({
     getPokemon: builder.query<Pokemon, string>({
       query: (name: string) => `pokemons/${name}`,
     }),
+    createPokemon: builder.mutation<Pokemon, Partial<Pokemon>>({
+      query: (newPokemon) => ({
+        url: 'pokemons',
+        method: 'POST',
+        body: newPokemon,
+      }),
+    }),
+    updatePokemon: builder.mutation<
+      Pokemon,
+      { name: string; data: Partial<Pokemon> }
+    >({
+      query: ({ name, data }) => ({
+        url: `pokemons/${name}`,
+        method: 'PUT',
+        body: data,
+      }),
+    }),
+    deletePokemon: builder.mutation<{ success: boolean }, string>({
+      query: (name) => ({
+        url: `pokemons/${name}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 })
 
-export const { useGetPokemonsQuery, useGetPokemonQuery } = pokemonApi
+export const {
+  useGetPokemonsQuery,
+  useGetPokemonQuery,
+  useCreatePokemonMutation,
+  useUpdatePokemonMutation,
+  useDeletePokemonMutation,
+} = pokemonApi
